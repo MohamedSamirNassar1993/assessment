@@ -1,0 +1,31 @@
+type ItemResponse
+{
+    totalItems:Int
+    totalPages:Int
+    items:[ItemDTO]
+}
+
+type ItemDTO
+{
+    id:Int
+    type:ItemTypeEnum
+    name:String
+}
+
+enum ItemTypeEnum
+{
+    SPACE,FOLDER,FILE
+}
+
+input ItemFilter
+{
+    offset:Int!
+    limit:Int!
+    email:String!
+    id:Int
+}
+
+type Query
+{
+    getFileMetaData(filter:ItemFilter):ItemResponse
+}
